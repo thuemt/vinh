@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Food – Prototype</title>
+<style>
+:root{--bg:#eef2ea;--ink:#16251b;--mut:#6b7a6f;--g:#1f7a4d;--gl:#dff1e5;--o:#f08a24;--card:#fff}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:#cfd8cb;color:var(--ink);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:16px}
+.phone{width:360px;height:720px;background:var(--bg);border:10px solid #2b2f2c;border-radius:42px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.screen{flex:1;overflow:auto;padding:20px 16px;display:none}
+.screen.on{display:block}
+h1{font-size:22px;margin-bottom:4px}h2{font-size:16px;margin:16px 0 8px}
+p,.mut{color:var(--mut);font-size:13px}
+.card{background:var(--card);border-radius:16px;padding:12px;margin-bottom:10px;display:flex;gap:12px;align-items:center;cursor:pointer;border:0;width:100%;text-align:left;font:inherit;color:inherit}
+.em{font-size:30px;width:52px;height:52px;border-radius:14px;background:var(--gl);display:grid;place-items:center;flex:none}
+.price{font-weight:700;color:var(--g)}.old{text-decoration:line-through;color:var(--mut);font-size:12px;margin-left:4px}
+.btn{background:var(--g);color:#fff;border:0;border-radius:14px;padding:14px;width:100%;font-size:15px;font-weight:600;cursor:pointer;margin-top:12px}
+.btn:focus-visible,.tab:focus-visible,.card:focus-visible,.ib:focus-visible{outline:3px solid var(--o);outline-offset:2px}
+.tabs{display:flex;background:#fff;border-top:1px solid #dde4da}
+.tab{flex:1;border:0;background:none;padding:10px 0;font-size:11px;color:var(--mut);cursor:pointer}
+.tab span{display:block;font-size:20px}.tab.on{color:var(--g);font-weight:700}
+.center{text-align:center}
+.row{display:flex;justify-content:space-between;align-items:center}
+.ib{width:40px;height:40px;border-radius:10px;border:1px solid #cfd8cb;background:#fff;cursor:pointer;font-size:16px}
+.avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(#cfe3f5,#e6f0f8);display:grid;place-items:center;font-size:64px;margin:90px auto 16px}
+.qr{width:160px;height:160px;margin:16px auto;background:repeating-conic-gradient(#16251b 0 25%,#fff 0 50%) 0 0/20px 20px;border:8px solid #fff;border-radius:8px}
+.big{font-size:40px;font-weight:800;color:var(--g)}
+.stat{flex:1;background:#fff;border-radius:16px;padding:14px;text-align:center}
+.chips{display:flex;gap:8px;overflow:auto;margin:10px 0}
+.chip{background:#fff;border-radius:99px;padding:6px 12px;font-size:12px;white-space:nowrap}
+</style>
+</head>
+<body>
+<main class="phone" aria-label="Green Food prototype">
+
+<section id="splash" class="screen on center" style="padding-top:200px">
+  <div style="font-size:72px">🌿</div><h1>Green Food</h1>
+  <p>Cứu thực phẩm dư, tiết kiệm tiền, bảo vệ môi trường</p>
+  <button class="btn" data-go="home">Bắt đầu</button>
+</section>
+
+<section id="home" class="screen">
+  <h1>Túi thực phẩm gần bạn</h1><p>Quận 1, TP.HCM · nhận hàng 19:00–21:00</p>
+  <div class="chips"><span class="chip">Tất cả</span><span class="chip">Bánh</span><span class="chip">Cơm</span><span class="chip">Rau củ</span><span class="chip">Sắp hết giờ</span></div>
+  <button class="card" data-go="detail"><div class="em">🥐</div><div><b>Tiệm bánh Nắng</b><p>Túi bánh · 0.8 km · còn 3 túi</p><span class="price">35.000đ</span><span class="old">120.000đ</span></div></button>
+  <button class="card" data-go="detail"><div class="em">🍱</div><div><b>Cơm Tấm Cô Ba</b><p>Túi cơm · 1.2 km · còn 5 túi</p><span class="price">29.000đ</span><span class="old">80.000đ</span></div></button>
+  <button class="card" data-go="detail"><div class="em">🥬</div><div><b>Rau Sạch Bốn Mùa</b><p>Túi rau củ · 2 km · còn 2 túi</p><span class="price">25.000đ</span><span class="old">70.000đ</span></div></button>
+</section>
+
+<section id="detail" class="screen">
+  <button class="ib" data-go="home" aria-label="Quay lại">←</button>
+  <div class="em" style="width:100%;height:150px;font-size:70px;margin:12px 0">🥐</div>
+  <h1>Túi bánh bất ngờ</h1><p>Tiệm bánh Nắng · 12 Lê Lợi, Q1</p>
+  <h2>Trong túi có gì?</h2><p>3–4 món bánh ngọt/mặn trong ngày, giá trị gốc từ 120.000đ. Nội dung thay đổi mỗi ngày.</p>
+  <h2>Nhận hàng</h2><p>Hôm nay 19:00–21:00 · Tự đến lấy</p>
+  <button class="btn" data-go="checkout">Đặt túi – 35.000đ</button>
+</section>
+
+<section id="checkout" class="screen">
+  <button class="ib" data-go="detail" aria-label="Quay lại">←</button>
+  <h1 style="margin-top:12px">Thanh toán</h1>
+  <div class="card"><div class="em">🥐</div><div><b>Túi bánh bất ngờ</b><p>x1 · Tiệm bánh Nắng</p></div></div>
+  <div class="row"><span>Tạm tính</span><b>35.000đ</b></div>
+  <div class="row"><span>Phí dịch vụ</span><b>2.000đ</b></div>
+  <div class="row" style="margin-top:8px"><span>Tổng</span><b class="price">37.000đ</b></div>
+  <h2>Phương thức</h2>
+  <div class="card">💳 Ví MoMo</div><div class="card">🏦 Chuyển khoản</div>
+  <button class="btn" data-go="qr">Thanh toán</button>
+</section>
+
+<section id="qr" class="screen center">
+  <h1 style="margin-top:40px">Đặt thành công 🎉</h1><p>Đưa mã này cho cửa hàng khi nhận túi</p>
+  <div class="qr" role="img" aria-label="Mã QR nhận hàng"></div>
+  <b>GF-240615-0087</b><p>Tiệm bánh Nắng · 19:00–21:00</p>
+  <button class="btn" data-go="impact">Xem tác động của tôi</button>
+</section>
+
+<section id="impact" class="screen">
+  <h1>Tác động xanh</h1><p>Bạn đã cùng Green Food giảm lãng phí</p>
+  <div class="card center" style="display:block"><div class="big">12,4 kg</div><p>thực phẩm đã cứu</p></div>
+  <div class="row" style="gap:10px"><div class="stat"><b class="price">31 kg</b><p>CO₂ giảm</p></div><div class="stat"><b class="price">486k</b><p>đã tiết kiệm</p></div></div>
+  <h2>Lịch sử đơn</h2>
+  <div class="card"><div class="em">🍱</div><div><b>Cơm Tấm Cô Ba</b><p>Hôm qua · 29.000đ · ⭐ 5</p></div></div>
+  <div class="card"><div class="em">🥬</div><div><b>Rau Sạch Bốn Mùa</b><p>3 ngày trước · 25.000đ · ⭐ 4</p></div></div>
+</section>
+
+<section id="shop" class="screen">
+  <h1>Cổng cửa hàng</h1><p>Tiệm bánh Nắng</p>
+  <h2>Đăng túi hôm nay</h2>
+  <div class="card" style="display:block"><p>Số lượng</p><b>5 túi</b><p style="margin-top:8px">Giá bán</p><b>35.000đ</b><p style="margin-top:8px">Giờ nhận</p><b>19:00–21:00</b></div>
+  <button class="btn">Đăng túi</button>
+  <h2>Đơn chờ nhận</h2>
+  <div class="card"><div class="em">👤</div><div><b>GF-240615-0087</b><p>Nguyễn Minh Anh · 1 túi</p></div></div>
+</section>
+
+<section id="profile" class="screen">
+  <div class="row"><button class="ib" data-go="home" aria-label="Quay lại">←</button><button class="ib" aria-label="Chỉnh sửa" style="color:var(--g)">✎</button></div>
+  <div class="center">
+    <div class="avatar" role="img" aria-label="Ảnh đại diện">🧑</div>
+    <h1>Nguyễn Minh Anh</h1><p>SV0123456</p>
+  </div>
+</section>
+
+<nav class="tabs" aria-label="Điều hướng">
+  <button class="tab on" data-go="home"><span>🏠</span>Trang chủ</button>
+  <button class="tab" data-go="impact"><span>🌍</span>Tác động</button>
+  <button class="tab" data-go="shop"><span>🏪</span>Cửa hàng</button>
+  <button class="tab" data-go="profile"><span>👤</span>Hồ sơ</button>
+</nav>
+</main>
+<script>
+const nav=["home","impact","shop","profile"];
+function go(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.go===id));
+  document.querySelector(".tabs").style.display=id==="splash"?"none":"flex";
+}
+document.querySelectorAll("[data-go]").forEach(e=>e.addEventListener("click",()=>go(e.dataset.go)));
+go("splash");
+</script>
+</body>
+</html>
